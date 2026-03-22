@@ -5,7 +5,7 @@ import re
 # ---------------- PAGE CONFIG ----------------
 st.set_page_config(
     page_title="AI Resume Classifier",
-    page_icon="📄",
+    page_icon="🤖",
     layout="wide"
 )
 
@@ -23,45 +23,74 @@ def clean_text(text):
     return text
 
 
-# ---------------- CUSTOM STYLE ----------------
+# ---------------- MODERN CSS ----------------
 st.markdown("""
 <style>
 
-.main-title{
-font-size:42px;
-font-weight:700;
+/* background gradient animation */
+.stApp {
+background: linear-gradient(-45deg, #0f2027, #203a43, #2c5364, #1c1c1c);
+background-size: 400% 400%;
+animation: gradient 12s ease infinite;
+color:white;
+}
+
+@keyframes gradient {
+0% {background-position:0% 50%;}
+50% {background-position:100% 50%;}
+100% {background-position:0% 50%;}
+}
+
+/* glass card */
+.card {
+background: rgba(255,255,255,0.08);
+padding: 30px;
+border-radius: 15px;
+backdrop-filter: blur(10px);
+box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+animation: fadeIn 1s ease-in-out;
+}
+
+/* result card */
+.result {
+background: linear-gradient(90deg,#00c6ff,#0072ff);
+padding: 25px;
+border-radius: 12px;
 text-align:center;
+font-size:26px;
+font-weight:600;
+color:white;
+animation: slideUp 0.7s ease;
+}
+
+/* animations */
+@keyframes fadeIn {
+from {opacity:0; transform: translateY(20px);}
+to {opacity:1; transform: translateY(0);}
+}
+
+@keyframes slideUp {
+from {opacity:0; transform: translateY(40px);}
+to {opacity:1; transform: translateY(0);}
+}
+
+/* title */
+.title {
+text-align:center;
+font-size:48px;
+font-weight:700;
 margin-bottom:5px;
 }
 
-.sub-title{
+.subtitle {
 text-align:center;
-color:gray;
+color:#cfcfcf;
 margin-bottom:30px;
 }
 
-.upload-card{
-padding:30px;
-border-radius:15px;
-border:1px solid #e6e6e6;
-background:white;
-box-shadow:0px 2px 8px rgba(0,0,0,0.05);
-}
-
-.result-card{
-padding:30px;
-border-radius:15px;
-background:linear-gradient(135deg,#4facfe,#00f2fe);
-color:white;
+.footer {
 text-align:center;
-font-size:24px;
-font-weight:600;
-box-shadow:0px 4px 15px rgba(0,0,0,0.15);
-}
-
-.footer{
-text-align:center;
-color:gray;
+color:#aaa;
 margin-top:40px;
 }
 
@@ -70,22 +99,24 @@ margin-top:40px;
 
 
 # ---------------- HEADER ----------------
-st.markdown('<div class="main-title">AI Resume Classification System</div>', unsafe_allow_html=True)
-st.markdown('<div class="sub-title">Upload resume and identify job category using Machine Learning</div>', unsafe_allow_html=True)
+st.markdown('<div class="title">🤖 AI Resume Classifier</div>', unsafe_allow_html=True)
+st.markdown('<div class="subtitle">Upload resume and detect job category using Machine Learning</div>', unsafe_allow_html=True)
 
-# ---------------- LAYOUT ----------------
-col1, col2 = st.columns(2)
+col1, col2 = st.columns([1,1])
 
-# ---------------- UPLOAD SECTION ----------------
+
+# ---------------- LEFT CARD ----------------
 with col1:
-    st.markdown('<div class="upload-card">', unsafe_allow_html=True)
+    st.markdown('<div class="card">', unsafe_allow_html=True)
     st.subheader("📤 Upload Resume")
-    uploaded_file = st.file_uploader("Upload resume (.txt)", type=["txt"])
-    st.markdown('</div>', unsafe_allow_html=True)
+    uploaded_file = st.file_uploader("", type=["txt"])
+    st.markdown("</div>", unsafe_allow_html=True)
 
-# ---------------- RESULT SECTION ----------------
+
+# ---------------- RIGHT CARD ----------------
 with col2:
-    st.subheader("🎯 Prediction Result")
+    st.markdown('<div class="card">', unsafe_allow_html=True)
+    st.subheader("🎯 Prediction")
 
     if uploaded_file is not None:
         text = uploaded_file.read().decode()
@@ -99,18 +130,32 @@ with col2:
         try:
             probs = model.predict_proba(vector)
             confidence = max(probs[0]) * 100
-            result = f"{category[0]} <br> <span style='font-size:16px'>Confidence : {confidence:.2f}%</span>"
+            result = f"{category[0]} <br> <span style='font-size:16px'>Confidence: {confidence:.2f}%</span>"
         except:
             result = category[0]
 
-        st.markdown(f'<div class="result-card">{result}</div>', unsafe_allow_html=True)
+        st.markdown(f'<div class="result">{result}</div>', unsafe_allow_html=True)
+
+    else:
+        st.info("Upload resume to see prediction")
+
+    st.markdown("</div>", unsafe_allow_html=True)
+
 
 # ---------------- PREVIEW ----------------
 if uploaded_file is not None:
     st.markdown("### 📄 Resume Preview")
-    st.text(text[:1500])
+    st.text_area("", text, height=200)
+
+
+# ---------------- FEATURES ----------------
+st.markdown("### 🚀 Features")
+col1,col2,col3 = st.columns(3)
+
+col1.metric("Model Type","ML Classifier")
+col2.metric("Text Vectorizer","TF-IDF")
+col3.metric("Prediction","Multi-Category")
 
 
 # ---------------- FOOTER ----------------
-st.markdown("---")
-st.markdown('<div class="footer">Machine Learning Project | Resume Classification using NLP</div>', unsafe_allow_html=True)
+st.markdown('<div class="footer">AI Resume Screening System | Machine Learning Project</div>', unsafe_allow_html=True)
