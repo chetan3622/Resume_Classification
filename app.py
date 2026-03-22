@@ -108,7 +108,7 @@ col1, col2 = st.columns([1,1])
 # ---------------- LEFT CARD ----------------
 with col1:
     st.markdown('<div class="card">', unsafe_allow_html=True)
-    st.subheader("📤 Upload Resume")
+    st.subheader("📤 Upload Your Resume")
     uploaded_file = st.file_uploader("", type=["txt"])
     st.markdown("</div>", unsafe_allow_html=True)
 
@@ -158,4 +158,4 @@ col3.metric("Prediction","Multi-Category")
 
 
 # ---------------- FOOTER ----------------
-st.markdown('<div class="footer">AI Resume Screening System | Machine Learning Project</div>', unsafe_allow_html=True)
+st.markdown('<div class="footer">Simply Finding Resume Category</div>', unsafe_allow_html=True)
