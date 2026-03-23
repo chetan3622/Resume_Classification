@@ -99,7 +99,7 @@ margin-top:40px;
 
 
 # ---------------- HEADER ----------------
-st.markdown('<div class="title">🤖 AI Resume Classifier</div>', unsafe_allow_html=True)
+st.markdown('<div class="title">🤖 Resume Classifier</div>', unsafe_allow_html=True)
 st.markdown('<div class="subtitle">Upload resume and detect job category using Machine Learning</div>', unsafe_allow_html=True)
 
 col1, col2 = st.columns([1,1])
@@ -108,7 +108,7 @@ col1, col2 = st.columns([1,1])
 # ---------------- LEFT CARD ----------------
 with col1:
     st.markdown('<div class="card">', unsafe_allow_html=True)
-    st.subheader("📤 Upload Your Resume")
+    st.subheader("📤 Upload Resume")
     uploaded_file = st.file_uploader("", type=["txt"])
     st.markdown("</div>", unsafe_allow_html=True)
 
@@ -137,7 +137,7 @@ with col2:
         st.markdown(f'<div class="result">{result}</div>', unsafe_allow_html=True)
 
     else:
-        st.info("Upload resume to see prediction")
+        st.info("Upload resume")
 
     st.markdown("</div>", unsafe_allow_html=True)
 
@@ -158,4 +158,4 @@ col3.metric("Prediction","Multi-Category")
 
 
 # ---------------- FOOTER ----------------
-st.markdown('<div class="footer">Simply Finding Resume Category</div>', unsafe_allow_html=True)
+st.markdown('<div class="footer">Resume Classification</div>', unsafe_allow_html=True)
