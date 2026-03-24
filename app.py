@@ -4,7 +4,7 @@ import re
 
 # ---------------- PAGE CONFIG ----------------
 st.set_page_config(
-    page_title="AI Resume Classifier",
+    page_title="Resume Classifier",
     page_icon="🤖",
     layout="wide"
 )
@@ -108,7 +108,7 @@ col1, col2 = st.columns([1,1])
 # ---------------- LEFT CARD ----------------
 with col1:
     st.markdown('<div class="card">', unsafe_allow_html=True)
-    st.subheader("📤 Upload Resume")
+    st.subheader("📤 Upload your Resume")
     uploaded_file = st.file_uploader("", type=["txt"])
     st.markdown("</div>", unsafe_allow_html=True)
 
@@ -137,14 +137,14 @@ with col2:
         st.markdown(f'<div class="result">{result}</div>', unsafe_allow_html=True)
 
     else:
-        st.info("Upload resume")
+        st.info("Upload Your resume")
 
     st.markdown("</div>", unsafe_allow_html=True)
 
 
 # ---------------- PREVIEW ----------------
 if uploaded_file is not None:
-    st.markdown("### 📄 Resume Preview")
+    st.markdown("### 📄 Your Resume Preview")
     st.text_area("", text, height=200)
 
 
