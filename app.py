@@ -91,7 +91,7 @@ col1, col2 = st.columns(2, gap="large")
 # ---------------- LEFT SIDE ----------------
 with col1:
     st.subheader("📤 Upload Resume")
-    uploaded_file = st.file_uploader("Upload your resume", type=["txt"])
+    uploaded_file = st.file_uploader(type=["txt"])
 
 
 # ---------------- RIGHT SIDE ----------------
