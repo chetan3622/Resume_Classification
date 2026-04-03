@@ -48,6 +48,16 @@ border-radius: 15px;
 backdrop-filter: blur(10px);
 box-shadow: 0 8px 32px rgba(0,0,0,0.3);
 animation: fadeIn 1s ease-in-out;
+padding: 25px;
+height: 240px;
+display:flex;
+flex-direction:column;
+justify-content:space-between;
+}
+
+/* uploader spacing */
+.stFileUploader {
+margin-top: 10px;
 }
 
 /* result card */
@@ -101,14 +111,14 @@ margin-top:40px;
 st.markdown('<div class="title">🤖 Resume Classifier</div>', unsafe_allow_html=True)
 st.markdown('<div class="subtitle">Upload resume and detect job category using Machine Learning</div>', unsafe_allow_html=True)
 
-col1, col2 = st.columns([1,1])
+col1, col2 = st.columns(2, gap="large")
 
 
 # ---------------- LEFT CARD ----------------
 with col1:
     st.markdown('<div class="card">', unsafe_allow_html=True)
     st.subheader("📤 Upload Resume")
-    uploaded_file = st.file_uploader("", type=["txt"])
+    uploaded_file = st.file_uploader("Upload your resume", type=["txt"])
     st.markdown("</div>", unsafe_allow_html=True)
 
 
@@ -149,11 +159,11 @@ if uploaded_file is not None:
 
 # ---------------- FEATURES ----------------
 st.markdown("### 🚀 Features")
-col1,col2,col3 = st.columns(3)
+f1,f2,f3 = st.columns(3)
 
-col1.metric("Model Type","ML Classifier")
-col2.metric("Text Vectorizer","TF-IDF")
-col3.metric("Prediction","Multi-Category")
+f1.metric("Model Type","ML Classifier")
+f2.metric("Text Vectorizer","TF-IDF")
+f3.metric("Prediction","Multi-Category")
 
 
 # ---------------- FOOTER ----------------
