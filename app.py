@@ -41,24 +41,7 @@ color:white;
 100% {background-position:0% 50%;}
 }
 
-/* glass card */
-.card {
-background: rgba(255,255,255,0.08);
-border-radius: 15px;
-backdrop-filter: blur(10px);
-box-shadow: 0 8px 32px rgba(0,0,0,0.3);
-animation: fadeIn 1s ease-in-out;
-height: 240px;
-display:flex;
-flex-direction:column;
-}
-
-/* uploader spacing */
-.stFileUploader {
-margin-top: 10px;
-}
-
-/* result card */
+/* prediction result */
 .result {
 background: linear-gradient(90deg,#00c6ff,#0072ff);
 padding: 25px;
@@ -68,12 +51,6 @@ font-size:26px;
 font-weight:600;
 color:white;
 animation: slideUp 0.7s ease;
-}
-
-/* animations */
-@keyframes fadeIn {
-from {opacity:0; transform: translateY(20px);}
-to {opacity:1; transform: translateY(0);}
 }
 
 @keyframes slideUp {
@@ -111,18 +88,14 @@ st.markdown('<div class="subtitle">Upload resume and detect job category using M
 
 col1, col2 = st.columns(2, gap="large")
 
-
-# ---------------- LEFT CARD ----------------
+# ---------------- LEFT SIDE ----------------
 with col1:
-    st.markdown('<div class="card">', unsafe_allow_html=True)
     st.subheader("📤 Upload Resume")
     uploaded_file = st.file_uploader("Upload your resume", type=["txt"])
-    st.markdown("</div>", unsafe_allow_html=True)
 
 
-# ---------------- RIGHT CARD ----------------
+# ---------------- RIGHT SIDE ----------------
 with col2:
-    st.markdown('<div class="card">', unsafe_allow_html=True)
     st.subheader("🎯 Prediction")
 
     if uploaded_file is not None:
@@ -137,7 +110,7 @@ with col2:
         try:
             probs = model.predict_proba(vector)
             confidence = max(probs[0]) * 100
-            result = f"{category[0]} <br> <span style='font-size:16px'>Confidence: {confidence:.2f}%</span>"
+            result = f"{category[0]} <br><span style='font-size:16px'>Confidence: {confidence:.2f}%</span>"
         except:
             result = category[0]
 
@@ -145,8 +118,6 @@ with col2:
 
     else:
         st.info("Upload resume to see prediction")
-
-    st.markdown("</div>", unsafe_allow_html=True)
 
 
 # ---------------- PREVIEW ----------------
