@@ -44,7 +44,6 @@ color:white;
 /* glass card */
 .card {
 background: rgba(255,255,255,0.08);
-padding: 30px;
 border-radius: 15px;
 backdrop-filter: blur(10px);
 box-shadow: 0 8px 32px rgba(0,0,0,0.3);
