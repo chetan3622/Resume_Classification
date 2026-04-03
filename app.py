@@ -2,6 +2,7 @@ import streamlit as st
 import joblib
 import re
 import PyPDF2
+from docx import Document
 
 # ---------------- PAGE CONFIG ----------------
 st.set_page_config(
@@ -24,11 +25,9 @@ def clean_text(text):
     return text
 
 
-# ---------------- MODERN CSS ----------------
+# ---------------- CSS ----------------
 st.markdown("""
 <style>
-
-/* background gradient animation */
 .stApp {
 background: linear-gradient(-45deg, #0f2027, #203a43, #2c5364, #1c1c1c);
 background-size: 400% 400%;
@@ -42,7 +41,6 @@ color:white;
 100% {background-position:0% 50%;}
 }
 
-/* prediction result */
 .result {
 background: linear-gradient(90deg,#00c6ff,#0072ff);
 padding: 25px;
@@ -51,20 +49,12 @@ text-align:center;
 font-size:26px;
 font-weight:600;
 color:white;
-animation: slideUp 0.7s ease;
 }
 
-@keyframes slideUp {
-from {opacity:0; transform: translateY(40px);}
-to {opacity:1; transform: translateY(0);}
-}
-
-/* title */
 .title {
 text-align:center;
 font-size:48px;
 font-weight:700;
-margin-bottom:5px;
 }
 
 .subtitle {
@@ -78,39 +68,49 @@ text-align:center;
 color:#aaa;
 margin-top:40px;
 }
-
 </style>
 """, unsafe_allow_html=True)
 
 
 # ---------------- HEADER ----------------
 st.markdown('<div class="title">🤖 Resume Classifier</div>', unsafe_allow_html=True)
-st.markdown('<div class="subtitle">Upload resume and detect job category using Machine Learning</div>', unsafe_allow_html=True)
+st.markdown('<div class="subtitle">Upload resume and detect job category</div>', unsafe_allow_html=True)
 
-col1, col2 = st.columns(2, gap="large")
+col1, col2 = st.columns(2)
 
-# ---------------- LEFT SIDE ----------------
+# ---------------- FILE UPLOAD ----------------
 with col1:
     st.subheader("📤 Upload Resume")
-    uploaded_file = st.file_uploader("Upload TXT or PDF resume", type=["txt","pdf"])
+    uploaded_file = st.file_uploader(
+        "Upload Resume",
+        type=["txt", "pdf", "docx"]
+    )
 
 
-# ---------------- RIGHT SIDE ----------------
+# ---------------- PREDICTION ----------------
 with col2:
     st.subheader("🎯 Prediction")
 
     if uploaded_file is not None:
 
-        # -------- TXT / PDF handling --------
-        if uploaded_file.type == "application/pdf":
+        # TXT
+        if uploaded_file.type == "text/plain":
+            text = uploaded_file.read().decode()
+
+        # PDF
+        elif uploaded_file.type == "application/pdf":
             pdf_reader = PyPDF2.PdfReader(uploaded_file)
             text = ""
             for page in pdf_reader.pages:
                 text += page.extract_text()
-        else:
-            text = uploaded_file.read().decode()
 
-        # -------- prediction --------
+        # DOCX
+        elif uploaded_file.type == "application/vnd.openxmlformats-officedocument.wordprocessingml.document":
+            doc = Document(uploaded_file)
+            text = ""
+            for para in doc.paragraphs:
+                text += para.text
+
         cleaned = clean_text(text)
         vector = tfidf.transform([cleaned])
 
@@ -136,14 +136,5 @@ if uploaded_file is not None:
     st.text_area("", text, height=200)
 
 
-# ---------------- FEATURES ----------------
-st.markdown("### 🚀 Features")
-f1,f2,f3 = st.columns(3)
-
-f1.metric("Model Type","ML Classifier")
-f2.metric("Text Vectorizer","TF-IDF")
-f3.metric("Prediction","Multi-Category")
-
-
 # ---------------- FOOTER ----------------
-st.markdown('<div class="footer">AI Resume Screening System | Machine Learning Project</div>', unsafe_allow_html=True)
+st.markdown('<div class="footer">AI Resume Screening System</div>', unsafe_allow_html=True)
