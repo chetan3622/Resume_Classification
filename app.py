@@ -51,7 +51,6 @@ animation: fadeIn 1s ease-in-out;
 height: 240px;
 display:flex;
 flex-direction:column;
-justify-content:space-between;
 }
 
 /* uploader spacing */
