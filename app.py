@@ -48,7 +48,6 @@ border-radius: 15px;
 backdrop-filter: blur(10px);
 box-shadow: 0 8px 32px rgba(0,0,0,0.3);
 animation: fadeIn 1s ease-in-out;
-padding: 25px;
 height: 240px;
 display:flex;
 flex-direction:column;
