@@ -107,7 +107,7 @@ col1, col2 = st.columns([1,1])
 
 # ---------------- LEFT CARD ----------------
 with col1:
-    st.markdown('<div class="card">')
+    st.markdown()
     st.subheader("📤 Upload Resume")
     uploaded_file = st.file_uploader("", type=["txt"])
     st.markdown("</div>", unsafe_allow_html=True)
