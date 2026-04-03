@@ -1,6 +1,7 @@
 import streamlit as st
 import joblib
 import re
+import PyPDF2
 
 # ---------------- PAGE CONFIG ----------------
 st.set_page_config(
@@ -91,7 +92,7 @@ col1, col2 = st.columns(2, gap="large")
 # ---------------- LEFT SIDE ----------------
 with col1:
     st.subheader("📤 Upload Resume")
-    uploaded_file = st.file_uploader("",type=["txt"])
+    uploaded_file = st.file_uploader("Upload TXT or PDF resume", type=["txt","pdf"])
 
 
 # ---------------- RIGHT SIDE ----------------
@@ -99,8 +100,17 @@ with col2:
     st.subheader("🎯 Prediction")
 
     if uploaded_file is not None:
-        text = uploaded_file.read().decode()
 
+        # -------- TXT / PDF handling --------
+        if uploaded_file.type == "application/pdf":
+            pdf_reader = PyPDF2.PdfReader(uploaded_file)
+            text = ""
+            for page in pdf_reader.pages:
+                text += page.extract_text()
+        else:
+            text = uploaded_file.read().decode()
+
+        # -------- prediction --------
         cleaned = clean_text(text)
         vector = tfidf.transform([cleaned])
 
