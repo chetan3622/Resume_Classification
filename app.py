@@ -7,7 +7,7 @@ import os
 
 # ---------------- PAGE CONFIG ----------------
 st.set_page_config(
-    page_title="RESUME CLASSIFIER",
+    page_title="RESUME CLASSIFIER PLATFORM",
     page_icon="",
     layout="wide"
 )
