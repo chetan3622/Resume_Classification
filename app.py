@@ -270,7 +270,7 @@ if uploaded_file is not None and 'text' in locals():
                 for skill in matched_skills:
                     st.write(f"- {skill}")
             else:
-                st.write("No matching skills found.")
+                st.write("No matching skills found in your resume.")
 
         with col4:
             st.markdown("###  Missing Skills")
