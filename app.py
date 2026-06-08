@@ -209,7 +209,7 @@ col1, col2 = st.columns(2)
 
 # ---------------- LEFT SECTION ----------------
 with col1:
-    st.subheader("Upload  Your Resume")
+    st.subheader("Upload Resume")
     with st.container(border=True):
         uploaded_file = st.file_uploader("Upload your resume", type=["txt", "pdf", "docx"])
 
