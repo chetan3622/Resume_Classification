@@ -11,7 +11,7 @@ st.set_page_config(
     layout="wide"
 )
 
-# ---------------- CHECK MODEL FILES ----------------
+# ---------------- CHECK MODEL FILES ------
 required_files = ["model.pkl", "tfidf.pkl", "label_encoder.pkl"]
 
 for file in required_files:
