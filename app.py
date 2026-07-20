@@ -10,7 +10,6 @@ st.set_page_config(
     page_icon="",
     layout="wide"
 )
-
 # ---------------- CHECK MOD
 required_files = ["model.pkl", "tfidf.pkl", "label_encoder.pkl"]
 
