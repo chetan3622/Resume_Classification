@@ -34,7 +34,7 @@ def clean_text(text):
     text = " ".join(text)
     return text
 
-# ---------------- FILE TEXT EXTRACTION ----------------
+# ---------------- FILE TEXT EXTRACTION
 def extract_text(uploaded_file):
     file_type = uploaded_file.name.split(".")[-1].lower()
 
