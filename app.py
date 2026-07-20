@@ -10,7 +10,7 @@ st.set_page_config(
     page_icon="",
     layout="wide"
 )
-# ----------------
+ 
 required_files = ["model.pkl", "tfidf.pkl", "label_encoder.pkl"]
 
 for file in required_files:
