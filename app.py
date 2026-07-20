@@ -4,7 +4,6 @@ import re
 import pdfplumber
 from docx import Document
 import os
-
 # ---------------- PAGE CONFIG
 st.set_page_config(
     page_title="RESUME CLASSIFICATION PLATFORM",
