@@ -51,7 +51,7 @@ def extract_text(uploaded_file):
 
     return ""
 
-# ---------------- SKILL DATABAS
+# ---------------- SKILL
 skill_db = {
     "SQL Developer": ["sql", "mysql", "oracle", "joins", "stored procedures", "etl", "database"],
     "PeopleSoft": ["peoplesoft", "fscm", "hrms", "erp", "workflow", "support"],
