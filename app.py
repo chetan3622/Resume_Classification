@@ -24,7 +24,6 @@ model = joblib.load("model.pkl")
 tfidf = joblib.load("tfidf.pkl")
 le = joblib.load("label_encoder.pkl")
 
-
 def clean_text(text):
     text = re.sub(r'[^a-zA-Z]', ' ', str(text))
     text = text.lower()
