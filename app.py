@@ -19,7 +19,7 @@ for file in required_files:
         st.info("Please run train_model.py first to generate model files.")
         st.stop()
 
-# ----------------
+# 
 model = joblib.load("model.pkl")
 tfidf = joblib.load("tfidf.pkl")
 le = joblib.load("label_encoder.pkl")
