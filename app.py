@@ -80,7 +80,7 @@ def keyword_based_role(text):
     best_role = max(role_scores, key=role_scores.get)
     return best_role, role_scores[best_role]
 
-# ---------------- RESUME SCOR
+# ----------------
 def calculate_score(matched, total):
     if total == 0:
         return 0
