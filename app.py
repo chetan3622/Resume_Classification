@@ -70,7 +70,7 @@ def find_skills(text, predicted_role):
     missing = [skill for skill in role_skills if skill.lower() not in text]
     return matched, missing
 
-#  K
+
 def keyword_based_role(text):
     text = text.lower()
     role_scores = {}
