@@ -63,7 +63,7 @@ skill_db = {
     "Python Developer": ["python", "django", "flask", "api", "automation", "backend"]
 }
 
-# ---------------- SKILL MATCH
+# ---------------- SKILL
 def find_skills(text, predicted_role):
     text = text.lower()
     role_skills = skill_db.get(predicted_role, [])
