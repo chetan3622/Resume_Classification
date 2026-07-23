@@ -194,7 +194,6 @@ textarea {
 
 st.markdown('<div class="title"> RESUME CLASSIFIER</div>', unsafe_allow_html=True)
 st.markdown('<div class="subtitle">Analyze your resume with Machine Learning, NLP, and smart skill matching</div>', unsafe_allow_html=True)
-
 # ----------------
 col1, col2 = st.columns(2)
 
