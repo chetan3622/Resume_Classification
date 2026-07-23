@@ -85,7 +85,6 @@ def calculate_score(matched, total):
         return 0
     return int((len(matched) / total) * 100)
 
-# 
 st.markdown("""
 <style>
 /* ===== PAGE BACKGROUND ===== */
