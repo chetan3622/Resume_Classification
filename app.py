@@ -197,7 +197,7 @@ st.markdown('<div class="subtitle">Analyze your resume with Machine Learning, NL
 # -----
 col1, col2 = st.columns(2)
 
-# ---------------- LEFT SECTION ----------------
+# ---------------- LEFT SECTION ------
 with col1:
     st.subheader("Upload Resume")
     with st.container(border=True):
