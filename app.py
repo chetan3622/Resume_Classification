@@ -221,7 +221,7 @@ with col2:
                 except:
                     confidence = 0
 
-                # Keyword-based
+                # Keywor
                 keyword_category, keyword_score = keyword_based_role(text)
 
                 if keyword_score >= 3:
