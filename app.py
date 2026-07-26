@@ -242,7 +242,7 @@ with col2:
         else:
             st.info("Upload resume to see prediction")
 
-# ---------------- PREVIEW + ANALYSIS 
+# ---------------- PREVIEW +
 if uploaded_file is not None and 'text' in locals():
     st.markdown("###  Resume Preview")
     st.text_area("", text, height=220)
