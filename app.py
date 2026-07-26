@@ -212,7 +212,6 @@ with col2:
                 cleaned = clean_text(text)
                 vector = tfidf.transform([cleaned])
 
-                # ML Prediction
                 prediction = model.predict(vector)
                 ml_category = le.inverse_transform(prediction)[0]
 
