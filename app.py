@@ -202,7 +202,6 @@ with col1:
     with st.container(border=True):
         uploaded_file = st.file_uploader("Upload your resume", type=["txt", "pdf", "docx"])
 
-#
 with col2:
     st.subheader(" Prediction")
     with st.container(border=True):
