@@ -272,7 +272,6 @@ if uploaded_file is not None and 'text' in locals():
             st.warning("Your resume is moderately aligned. Add more relevant skills.")
         else:
             st.error("Your resume needs improvement for this role. Add more role-specific skills.")
- 
 st.markdown("###  Features")
 f1, f2, f3 = st.columns(3)
 f1.metric("Model Type", "ML Classifier")
