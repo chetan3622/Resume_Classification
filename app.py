@@ -279,5 +279,4 @@ f1.metric("Model Type", "ML Classifier")
 f2.metric("Text Vectorizer", "TF-IDF")
 f3.metric("Prediction", "Multi-Category")
 
-
 st.markdown('<div class="footer">Resume Classifier | Machine Learning + NLP Project</div>', unsafe_allow_html=True)
